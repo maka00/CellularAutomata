@@ -8,6 +8,9 @@ jobs:
         dotnet: ['6.0.x']
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-dotnet@v1
+        with: 
+          dotnet-version: '2.2.x'
       - name: Setup dotnet ${{ matrix.dotnet-version }}
         uses: actions/setup-dotnet@v1
         with:
