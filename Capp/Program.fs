@@ -24,7 +24,7 @@ let generateNextRow (rule: Rule) (row: Cell seq) =
     let generatedCells =
         row
         |> Seq.windowed 3
-        |> Seq.map (fun v -> rule (v.[0], v.[1], v.[2]))
+        |> Seq.map (fun v -> rule (v[0], v[1], v[2]))
 
     seq {
         yield Empty
@@ -63,7 +63,7 @@ let drawImage (grid : Cell seq seq) =
                 match cell with
                 | Full -> black
                 | Empty -> white
-            image.[cellIndex, rowIndex] <- colour
+            image[cellIndex, rowIndex] <- colour
 
 let generateRule(ruleNumber: byte) =
     let ruleBitString = Convert.ToString(ruleNumber, 2).PadLeft(8,'0')
@@ -79,7 +79,7 @@ let generateRule(ruleNumber: byte) =
     let ruleFn(cells: Cell * Cell * Cell) =
         let bitIndex = patternToBitStringIndex cells
         
-        match ruleBitString.[bitIndex] with
+        match ruleBitString[bitIndex] with
         | '0' -> Empty
         | '1' -> Full
         | _ -> raise (Exception("Unexpected input"))
